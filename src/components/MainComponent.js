@@ -10,6 +10,7 @@ import Contact from './ContactComponent';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import { toHaveFocus } from '@testing-library/jest-dom/dist/matchers';
 
 class Main extends Component {
 
@@ -46,7 +47,7 @@ class Main extends Component {
         <Header />
         <Switch>
               <Route path='/home' component={HomePage} />
-              <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
+              <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} selectedDish={this.state.selectedDish} onClick={(dishId) => this.onDishSelect(dishId)} />} />
               <Route exact path='/contactus' component={Contact} />
               <Redirect to="/home" />
           </Switch>
